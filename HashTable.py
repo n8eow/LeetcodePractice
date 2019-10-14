@@ -1,57 +1,49 @@
 class ListNode:
-    def __init__(self, val):
-        self.val = val
+    def __init__(self, key):
+        self.key = key
         self.next = None
 
 class MyHashSet:
-
     def __init__(self, capacity=1000):
-        """
-        Initialize your data structure here.
-        """
         self.capacity = capacity
-        self.data = [None] * capacity
+        self.Table = [None]*capacity
+
 
     def add(self, key):
-        idx = key % self.capacity
-        node = self.data[idx]
+        index = key%self.capacity
+        node = self.Table[index]
         while node:
-            if node.val == key:
+            if node.key == key:
                 return
             node = node.next
-        new_node = ListNode(key)
-        new_node.next = self.data[idx]
-        self.data[idx] = new_node
+        New_node = ListNode(key)
+        New_node.next = self.Table[index]
+        self.Table[index] = New_node
 
-    def remove(self, key: int) -> None:
-        idx = key % self.capacity
-        node = self.data[idx]
-        if node and node.val == key:
-            self.data[idx] = node.next
+
+
+    def remove(self, key):
+        index = key%self.capacity
+        node = self.Table[index]
+        if node and node.key == key:
+            self.Table[index] = node.next
             return
         pre = None
         while node:
-            if node.val == key:
+            if node.key == key:
                 pre.next = node.next
                 return
             pre = node
             node = node.next
 
-    def contains(self, key: int) -> bool:
-        """
-        Returns true if this set contains the specified element
-        """
-        idx = key % self.capacity
-        node = self.data[idx]
+    def contains(self, key):
+        index = key%self.capacity
+        node = self.Table[index]
+
         while node:
-            if node.val == key:
+            if node.key == key:
                 return True
             node = node.next
         return False
 
 
-# Your MyHashSet object will be instantiated and called as such:
-# obj = MyHashSet()
-# obj.add(key)
-# obj.remove(key)
-# param_3 = obj.contains(key)

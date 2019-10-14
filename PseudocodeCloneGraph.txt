@@ -1,0 +1,13 @@
+Get Node
+Create Visited Array
+Create Table dictionary
+Create Stack/queue (DFS/BFS)
+Push currnode onto stack, Visited, Table w/ no neighbors
+
+While stack isn't empty
+  pop  curr_node
+  for each of the neighbors not in visited array
+    create new node
+    push new node onto stack, visited, table
+    append the neighbor to the neighbor part of the curr node
+return curr_node from Table

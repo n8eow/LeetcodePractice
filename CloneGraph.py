@@ -28,7 +28,7 @@ class Solution(object):
                     stack.append(nei)
                 #assume that currNode is already in the table, since it should already be in the visited set.
                 table.get(currNode).neighbors.append(table.get(nei))
-                ##table.currnodeNeighbors.append(neibors)
+                #currnode.neighbors = table[neighbor]
 
 
         return table.get(node)
